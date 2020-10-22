@@ -1,19 +1,15 @@
 import axios, { AxiosResponse } from "axios"
 
-const baseUrl: string = "http://34.234.193.247"
+const baseUrl: string = "http://api.thediversecandidate.com"
 
 
 export const getArticles = async (search: string, maxResult: number): Promise<AxiosResponse<GetArticlesResponse>> => {
-    axios.defaults.withCredentials = true;
     try {
         const results: AxiosResponse<GetArticlesResponse> = await axios.get(baseUrl + `/articles/search/${search}/${maxResult}`,
             {
-                method: "OPTIONS",
                 headers: {
                     "Authorization": "Token fd314d4436dfdc9fd990822cd1e483d951c7dfd6",
                     "Accept": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "POST,GET,OPTIONS, PUT, DELETE"
                 }
             });
         return results;
